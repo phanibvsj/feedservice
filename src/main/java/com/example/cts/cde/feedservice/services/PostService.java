@@ -12,4 +12,5 @@ public interface PostService {
 
 	void createPost(long userId, PostRequest postRequest);
 	List<Post> findByUserId(long userId);
+	List<Post> findByUserIdAndPostId(long userId, long postId);
 }

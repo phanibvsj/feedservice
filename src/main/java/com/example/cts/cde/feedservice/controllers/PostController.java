@@ -26,6 +26,12 @@ public class PostController {
 		return postService.findByUserId(userId);
 	}
 	
+	@RequestMapping(path="/{userid}/{postid}",method=RequestMethod.GET)
+	public List<Post> getPost(@PathVariable(name="userid") long userId, @PathVariable(name="postid") long postId){
+		System.out.println("Requested post for: " + userId + " with postId: " + postId);
+		return postService.findByUserIdAndPostId(userId, postId);
+	}
+	
 	@RequestMapping(path="/{userid}",method=RequestMethod.POST)
 	public void createPost(@PathVariable(name="userid") long userId, @RequestBody PostRequest request){
 		System.out.println("Requested create post for: " + userId);

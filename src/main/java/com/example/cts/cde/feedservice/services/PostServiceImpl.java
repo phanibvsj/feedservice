@@ -43,5 +43,22 @@ public class PostServiceImpl implements PostService {
 		}
 		return posts;
 	}
+	
+	@Override
+	public List<com.example.cts.cde.feedservice.model.Post> findByUserIdAndPostId(long userId, long postId) {
+		Post post = postRepository.findByUserIdAndPostId(userId, postId);
+		List<com.example.cts.cde.feedservice.model.Post> posts = new ArrayList<>();
+		if ( post != null ){
+			com.example.cts.cde.feedservice.model.Post model = new com.example.cts.cde.feedservice.model.Post();
+			model.setUserId(post.getUserId());
+			model.setPostTitle(post.getPostTitle());
+			model.setPostContent(post.getPostContent());
+			model.setPostType(post.getPostType());
+			model.setCreatedDate(post.getCreatedDate());
+			posts.add(model);
+		}
+		
+		return posts;
+	}
 
 }
